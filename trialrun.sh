@@ -1,5 +1,5 @@
 cd ~/DBIS
-sh .asterix-tests/onetimesetup.sh
+sh ./asterix-tests/onetimesetup.sh
 sh ./asterix-tests/runsetup.sh
 wait
 sh ./asterix-tests/wiscondefdatagen.sh $1
