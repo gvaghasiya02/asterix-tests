@@ -6,6 +6,6 @@ cd ~/DBIS
 cp ./JSON-Wisconsin-Data-Generator/outputp_0.adm ./data/wiscondatadef.adm
 wait
 rm ./JSON-Wisconsin-Data-Generator/outputp_0.adm
-pwd
+cd ~?DBIS
 
 
