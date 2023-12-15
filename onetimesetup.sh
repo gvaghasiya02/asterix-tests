@@ -4,7 +4,7 @@ mvn --version
 python3 --version
 git --version
 wait
-rm -r asterixdb_gaurav data JSON-Wisconsin-Data-Generator
+rm -rf asterixdb_gaurav data JSON-Wisconsin-Data-Generator
 echo "cloning asterixdb"
 git clone https://github.com/gvaghasiya02/asterixdb_gaurav.git
 wait 
