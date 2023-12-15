@@ -13,5 +13,3 @@ git clone https://github.com/shivajah/JSON-Wisconsin-Data-Generator.git
 wait
 mkdir data
 ls -l
-
-
