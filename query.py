@@ -16,7 +16,11 @@ data = {
     "pretty": "true",
     "client_context_id": "xyz"
 }
-
+data2= {
+    "statement": "USE filler; SELECT * FROM wisconfiller;",
+    "pretty": "true",
+    "client_context_id": "xyz"
+}
 # Number of runs
 num_runs = 11
 
@@ -25,8 +29,8 @@ all_metrics = []
 
 # Ignore the first run
 for run in range(1, num_runs + 1):
+    response2=requests.post(url, headers=headers, data=data2)
     response = requests.post(url, headers=headers, data=data)
-    
     if response.status_code == 200:
         # Parse metrics from the response
         metrics = response.json().get("metrics", {})
