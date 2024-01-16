@@ -37,6 +37,12 @@ all_metrics = []
 # Ignore the first run
 for run in range(1, num_runs + 1):
     response2=requests.post(url, headers=headers, data=data2)
+    if response2.status_code == 200:
+        # Parse metrics from the response
+        metrics = response2.json().get("metrics", {})
+        
+        print(f"Run {run} - Elapsed Time: {metrics.get('elapsedTime', 'N/A')}")
+        
     response = requests.post(url, headers=headers, data=data)
     if response.status_code == 200:
         # Parse metrics from the response
