@@ -12,7 +12,7 @@ csv_filename = "query_metrics.csv"
 
 # Define data for the query
 data = {
-    "statement": "SET `compiler.optimize.groupby` 'true'; USE wiscon; SELECT onePercent, SUM(ten) AS count FROM wiscondef GROUP BY wiscondef.onePercent;",
+    "statement": "USE wiscon; SELECT onePercent, SUM(ten) AS count FROM wiscondef GROUP BY wiscondef.onePercent;",
     "pretty": "true",
     "client_context_id": "xyz"
 }
