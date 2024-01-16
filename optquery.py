@@ -18,7 +18,7 @@ csv_filename = "opt_query_metrics.csv"
 # }
 
 data = {
-    "statement": "SET `compiler.optimize.groupby` 'true';USE wiscon; SELECT onePercent, COUNT(*) AS count FROM wiscondef GROUP BY wiscondef.onePercent;",
+    "statement": "SET `compiler.optimize.groupby` 'true';USE wisconsmall; SELECT onePercent, COUNT(*) AS count FROM wiscondefsmall GROUP BY wiscondef.onePercent;",
     "pretty": "true",
     "client_context_id": "xyz"
 }
