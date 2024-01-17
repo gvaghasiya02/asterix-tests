@@ -18,7 +18,7 @@ csv_filename = "query_metrics.csv"
 # }
 
 data = {
-    "statement": "USE wisconsmall; SELECT onePercent, COUNT(*) AS count FROM wiscondef GROUP BY wiscondefsmall.onePercent;",
+    "statement": "USE wisconsmall; SELECT onePercent, COUNT(*) AS count FROM wiscondefsmall GROUP BY wiscondefsmall.onePercent;",
     "pretty": "true",
     "client_context_id": "xyz"
 }
