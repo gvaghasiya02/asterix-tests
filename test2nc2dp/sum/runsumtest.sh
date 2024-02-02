@@ -1,43 +1,43 @@
 # sum
 # 2gb
-python3 query_sum_2gb.py
+python3 ~/DBIS/asterix-tests/test2nc2dp/sum/query_sum_2gb.py
 wait
-mv query_metrics.csv ~/DBIS/results/test2nc2dp/sum/query_matrices_sum_2gb.csv
-python3 optquery_sum_2gb.py
+mv ~/DBIS/asterix-tests/test2nc2dp/sum/query_metrics.csv ~/DBIS/results/test2nc2dp/sum/query_matrices_sum_2gb.csv
+python3 ~/DBIS/asterix-tests/test2nc2dp/sum/optquery_sum_2gb.py
 wait
-mv query_metrics.csv ~/DBIS/results/test2nc2dp/sum/opt_query_metrics_sum_2gb.csv
+mv ~/DBIS/asterix-tests/test2nc2dp/sum/query_metrics.csv ~/DBIS/results/test2nc2dp/sum/opt_query_metrics_sum_2gb.csv
 # 4gb
-python3 query_sum_4gb.py
+python3 ~/DBIS/asterix-tests/test2nc2dp/sum/query_sum_4gb.py
 wait
-mv query_metrics.csv ~/DBIS/results/test2nc2dp/sum/query_matrices_sum_4gb.csv
-python3 optquery_sum_4gb.py
+mv ~/DBIS/asterix-tests/test2nc2dp/sum/query_metrics.csv ~/DBIS/results/test2nc2dp/sum/query_matrices_sum_4gb.csv
+python3 ~/DBIS/asterix-tests/test2nc2dp/sum/optquery_sum_4gb.py
 wait
-mv uery_metrics.csv ~/DBIS/results/test2nc2dp/sum/opt_query_metrics_sum_4gb.csv
+mv ~/DBIS/asterix-tests/test2nc2dp/sum/uery_metrics.csv ~/DBIS/results/test2nc2dp/sum/opt_query_metrics_sum_4gb.csv
 # 8gb
-python3 query_sum_8gb.py
+python3 ~/DBIS/asterix-tests/test2nc2dp/sum/query_sum_8gb.py
 wait
-mv query_metrics.csv ~/DBIS/results/test2nc2dp/sum/query_matrices_sum_8gb.csv
-python3 optquery_sum_8gb.py
+mv ~/DBIS/asterix-tests/test2nc2dp/sum/query_metrics.csv ~/DBIS/results/test2nc2dp/sum/query_matrices_sum_8gb.csv
+python3 ~/DBIS/asterix-tests/test2nc2dp/sum/optquery_sum_8gb.py
 wait
-mv query_metrics.csv ~/DBIS/results/test2nc2dp/sum/opt_query_metrics_sum_8gb.csv
+mv ~/DBIS/asterix-tests/test2nc2dp/sum/query_metrics.csv ~/DBIS/results/test2nc2dp/sum/opt_query_metrics_sum_8gb.csv
 # 16gb
-python3 query_sum_16gb.py
+python3 ~/DBIS/asterix-tests/test2nc2dp/sum/query_sum_16gb.py
 wait
-mv query_metrics.csv ~/DBIS/results/test2nc2dp/sum/query_matrices_sum_16gb.csv
-python3 optquery_sum_16gb.py
+mv ~/DBIS/asterix-tests/test2nc2dp/sum/query_metrics.csv ~/DBIS/results/test2nc2dp/sum/query_matrices_sum_16gb.csv
+python3 ~/DBIS/asterix-tests/test2nc2dp/sum/optquery_sum_16gb.py
 wait
-mv query_metrics.csv ~/DBIS/results/test2nc2dp/sum/opt_query_metrics_sum_16gb.csv
+mv ~/DBIS/asterix-tests/test2nc2dp/sum/query_metrics.csv ~/DBIS/results/test2nc2dp/sum/opt_query_metrics_sum_16gb.csv
 # 32gb
-python3 query_sum_32gb.py
+python3 ~/DBIS/asterix-tests/test2nc2dp/sum/query_sum_32gb.py
 wait
-mv query_metrics.csv ~/DBIS/results/test2nc2dp/sum/query_matrices_sum_32gb.csv
-python3 optquery_sum_32gb.py
+mv ~/DBIS/asterix-tests/test2nc2dp/sum/query_metrics.csv ~/DBIS/results/test2nc2dp/sum/query_matrices_sum_32gb.csv
+python3 ~/DBIS/asterix-tests/test2nc2dp/sum/optquery_sum_32gb.py
 wait
-mv query_metrics.csv ~/DBIS/results/test2nc2dp/sum/opt_query_metrics_sum_32gb.csv
+mv ~/DBIS/asterix-tests/test2nc2dp/sum/query_metrics.csv ~/DBIS/results/test2nc2dp/sum/opt_query_metrics_sum_32gb.csv
 # 64gb
-python3 query_sum_64gb.py
+python3 ~/DBIS/asterix-tests/test2nc2dp/sum/query_sum_64gb.py
 wait
-mv query_metrics.csv ~/DBIS/results/test2nc2dp/sum/query_matrices_sum_64gb.csv
-python3 optquery_sum_64gb.py
+mv ~/DBIS/asterix-tests/test2nc2dp/sum/query_metrics.csv ~/DBIS/results/test2nc2dp/sum/query_matrices_sum_64gb.csv
+python3 ~/DBIS/asterix-tests/test2nc2dp/sum/optquery_sum_64gb.py
 wait
-mv query_metrics.csv ~/DBIS/results/test2nc2dp/sum/opt_query_metrics_sum_64gb.csv
+mv ~/DBIS/asterix-tests/test2nc2dp/sum/query_metrics.csv ~/DBIS/results/test2nc2dp/sum/opt_query_metrics_sum_64gb.csv
