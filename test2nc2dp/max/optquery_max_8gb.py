@@ -41,7 +41,7 @@ for run in range(1, num_runs + 1):
     if response.status_code == 200:
         # Parse metrics from the response
         metrics = response.json().get("metrics", {})
-        print("hi")
+        
         
         # Add metrics to the list
         all_metrics.append(metrics)
