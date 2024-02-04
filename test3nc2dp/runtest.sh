@@ -1,7 +1,7 @@
-sh ~/DBIS/asterix-tests/test4nc2dp/count/runcounttest.sh
+sh ~/DBIS/asterix-tests/test3nc2dp/count/runcounttest.sh
 wait
-sh ~/DBIS/asterix-tests/test4nc2dp/sum/runsumtest.sh
+sh ~/DBIS/asterix-tests/test3nc2dp/sum/runsumtest.sh
 wait
-sh ~/DBIS/asterix-tests/test4nc2dp/max/runmaxtest.sh
+sh ~/DBIS/asterix-tests/test3nc2dp/max/runmaxtest.sh
 wait
-sh ~/DBIS/asterix-tests/test4nc2dp/min/runmintest.sh
+sh ~/DBIS/asterix-tests/test3nc2dp/min/runmintest.sh
