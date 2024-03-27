@@ -11,7 +11,7 @@ headers = {
 csv_filename = "query_metrics.csv"
 
 data = {
-    "statement": "USE wiscon8gb; SELECT onePercent, COUNT(*) AS count FROM wiscondef8gb GROUP BY wiscondef8gb.onePercent;",
+    "statement": "SET `compiler.optimize.groupby` 'false';USE wiscon8gb; SELECT onePercent, COUNT(*) AS count FROM wiscondef8gb GROUP BY wiscondef8gb.onePercent;",
     "pretty": "true",
     "client_context_id": "xyz"
 }

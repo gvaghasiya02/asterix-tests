@@ -12,13 +12,13 @@ csv_filename = "query_metrics.csv"
 
 # Define data for the query
 # data = {
-#     "statement": "USE wiscon; SELECT onePercent, SUM(ten) AS count FROM wiscondef GROUP BY wiscondef.onePercent;",
+#     "statement": "SET `compiler.optimize.groupby` 'false';USE wiscon; SELECT onePercent, SUM(ten) AS count FROM wiscondef GROUP BY wiscondef.onePercent;",
 #     "pretty": "true",
 #     "client_context_id": "xyz"
 # }
 
 data = {
-    "statement": "USE wiscon108; SELECT onePercent, COUNT(*) AS count FROM wiscondef108 GROUP BY wiscondef108.onePercent;",
+    "statement": "SET `compiler.optimize.groupby` 'false';USE wiscon108; SELECT onePercent, COUNT(*) AS count FROM wiscondef108 GROUP BY wiscondef108.onePercent;",
     "pretty": "true",
     "client_context_id": "xyz"
 }
