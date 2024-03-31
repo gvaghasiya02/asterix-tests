@@ -1,6 +1,6 @@
 import requests
 
-url = "http://10.16.229.101:19002/query/service"
+url = "http://10.16.229.109:19002/query/service"
 
 headers = {
     "Content-Type": "application/x-www-form-urlencoded"
