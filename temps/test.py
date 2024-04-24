@@ -9,13 +9,13 @@ headers = {
 }
 
 data = {
-    "statement": "SET `compiler.codegen` 'true';USE wiscon16gb; SELECT ten, COUNT(ten) AS count FROM wiscondef16gb GROUP BY wiscondef16gb.ten;",
+    "statement": "SET `compiler.optimize.groupby` 'true';USE wiscon16gb; SELECT ten, COUNT(ten) AS count FROM wiscondef16gb GROUP BY wiscondef16gb.ten;",
     "pretty": "true",
     "client_context_id": "xyz"
 }
 
 data1 = {
-    "statement": "SET `compiler.codegen` 'false';USE wiscon16gb; SELECT ten, COUNT(ten) AS count FROM wiscondef16gb GROUP BY wiscondef16gb.ten;",
+    "statement": "SET `compiler.optimize.groupby` 'false';USE wiscon16gb; SELECT ten, COUNT(ten) AS count FROM wiscondef16gb GROUP BY wiscondef16gb.ten;",
     "pretty": "true",
     "client_context_id": "xyz"
 }
@@ -77,13 +77,13 @@ for run in range(1, num_runs + 1):
 
 
 # data = {
-#     "statement": "SET `compiler.codegen` 'false';USE wiscon16gb; SELECT string4, COUNT(string4) AS count FROM wiscondef16gb GROUP BY wiscondef16gb.string4;",
+#     "statement": "SET `compiler.optimize.groupby` 'false';USE wiscon16gb; SELECT string4, COUNT(string4) AS count FROM wiscondef16gb GROUP BY wiscondef16gb.string4;",
 #     "pretty": "true",
 #     "client_context_id": "xyz"
 # }
 
 # data1 = {
-#     "statement": "SET `compiler.codegen` 'true';USE wiscon16gb; SELECT string4, COUNT(string4) AS count FROM wiscondef16gb GROUP BY wiscondef16gb.string4;",
+#     "statement": "SET `compiler.optimize.groupby` 'true';USE wiscon16gb; SELECT string4, COUNT(string4) AS count FROM wiscondef16gb GROUP BY wiscondef16gb.string4;",
 #     "pretty": "true",
 #     "client_context_id": "xyz"
 # }
@@ -144,13 +144,13 @@ for run in range(1, num_runs + 1):
 
 
 # data = {
-#     "statement": "SET `compiler.codegen` 'false';USE wiscon16gb; SELECT string5, COUNT(string5) AS count FROM wiscondef16gb GROUP BY wiscondef16gb.string5;",
+#     "statement": "SET `compiler.optimize.groupby` 'false';USE wiscon16gb; SELECT string5, COUNT(string5) AS count FROM wiscondef16gb GROUP BY wiscondef16gb.string5;",
 #     "pretty": "true",
 #     "client_context_id": "xyz"
 # }
 
 # data1 = {
-#     "statement": "SET `compiler.codegen` 'true';USE wiscon16gb; SELECT string5, COUNT(string5) AS count FROM wiscondef16gb GROUP BY wiscondef16gb.string5;",
+#     "statement": "SET `compiler.optimize.groupby` 'true';USE wiscon16gb; SELECT string5, COUNT(string5) AS count FROM wiscondef16gb GROUP BY wiscondef16gb.string5;",
 #     "pretty": "true",
 #     "client_context_id": "xyz"
 # }
@@ -211,13 +211,13 @@ for run in range(1, num_runs + 1):
 
 
 # data = {
-#     "statement": "SET `compiler.codegen` 'false';USE wiscon16gb; SELECT hundredkgroups,string4 COUNT(*) AS count FROM wiscondef16gb GROUP BY wiscondef16gb.hundredkgroups,wiscondef16gb.string4;",
+#     "statement": "SET `compiler.optimize.groupby` 'false';USE wiscon16gb; SELECT hundredkgroups,string4 COUNT(*) AS count FROM wiscondef16gb GROUP BY wiscondef16gb.hundredkgroups,wiscondef16gb.string4;",
 #     "pretty": "true",
 #     "client_context_id": "xyz"
 # }
 
 # data1 = {
-#     "statement": "SET `compiler.codegen` 'true';USE wiscon16gb; SELECT hundredkgroups,string4 COUNT(*) AS count FROM wiscondef16gb GROUP BY wiscondef16gb.hundredkgroups,wiscondef16gb.string4;",
+#     "statement": "SET `compiler.optimize.groupby` 'true';USE wiscon16gb; SELECT hundredkgroups,string4 COUNT(*) AS count FROM wiscondef16gb GROUP BY wiscondef16gb.hundredkgroups,wiscondef16gb.string4;",
 #     "pretty": "true",
 #     "client_context_id": "xyz"
 # }
