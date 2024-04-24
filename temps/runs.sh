@@ -1,3 +1,5 @@
+python3 ~/DBIS/asterix-tests/temps/wisconfillerloadfinal.py
+python3 ~/DBIS/asterix-tests/temps/wisconload.py
 python3 ~/DBIS/asterix-tests/temps/query_count_16gb.py
 wait
 mv query_metrics.csv ~/DBIS/results/temps/query_metrics_count_16gb.csv
