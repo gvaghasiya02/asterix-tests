@@ -67,7 +67,7 @@ for run in range(1, num_runs + 1):
 csv_filename = "query_metrics.csv"
 
 # Export metrics to CSV
-header = ["Quey", "Run", "ElapsedTime", "ExecutionTime", "CompileTime", "QueueWaitTime", "ResultCount", "ResultSize", "ProcessedObjects","bufferCacheHitRatio","bufferCachePageReadCount"]
+header = ["Query", "Run", "ElapsedTime", "ExecutionTime", "CompileTime", "QueueWaitTime", "ResultCount", "ResultSize", "ProcessedObjects","bufferCacheHitRatio","bufferCachePageReadCount"]
 
 with open(csv_filename, mode='w', newline='') as file:
     writer = csv.DictWriter(file, fieldnames=header)
