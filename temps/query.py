@@ -64,6 +64,8 @@ for run in range(1, num_runs + 1):
         print(f"Optimized Run {run} , {data2['statement']} - Execution Time: {metrics.get('executionTime', 'N/A')}")    
     
 
+csv_filename = "query_metrics.csv"
+
 # Export metrics to CSV
 header = ["Quey", "Run", "ElapsedTime", "ExecutionTime", "CompileTime", "QueueWaitTime", "ResultCount", "ResultSize", "ProcessedObjects","bufferCacheHitRatio","bufferCachePageReadCount"]
 
