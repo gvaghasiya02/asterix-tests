@@ -69,12 +69,21 @@ csv_filename = "query_metrics.csv"
 # Export metrics to CSV
 header = ["Query", "Run", "ElapsedTime", "ExecutionTime", "CompileTime", "QueueWaitTime", "ResultCount", "ResultSize", "ProcessedObjects","bufferCacheHitRatio","bufferCachePageReadCount"]
 
-with open(csv_filename, mode='w', newline='') as file:
+import os.path
+
+# Check if the file already exists
+if os.path.exists(csv_filename):
+    mode = 'a'  # Append mode
+else:
+    mode = 'w'  # Write mode
+
+with open(csv_filename, mode=mode, newline='') as file:
     writer = csv.DictWriter(file, fieldnames=header)
     
-    # Write header
-    writer.writeheader()
-    
+    # If the file is newly created, write the header
+    if mode == 'w':
+        writer.writeheader()
+            
     # Write data for the last 10 runs
     for run, metrics in enumerate(all_metrics[-10:], start=1):
         writer.writerow({
