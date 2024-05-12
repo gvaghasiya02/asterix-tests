@@ -52,7 +52,7 @@ for run in range(1, num_runs + 1):
 
     response=requests.post(url, headers=headers, data=data)
     if response.status_code == 200:
-        metrics = response2.json().get("metrics", {})
+        metrics = response.json().get("metrics", {})
         
         print(f"Cache clear Run {run} - Execution Time: {metrics.get('executionTime', 'N/A')}")
 
