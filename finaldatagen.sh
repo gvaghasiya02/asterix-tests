@@ -35,7 +35,3 @@ wait
 java -jar ./target/wisconsin-datagen.jar writer=file workload=final.json  cardinality=100000000
 wait
 cp ./outputp_0.adm ~/DBIS/data/wiscon_moregroups_108.adm
-wait
-java -jar ./target/wisconsin-datagen.jar writer=file workload=final.json  cardinality=1000000000
-wait
-cp ./outputp_0.adm ~/DBIS/data/wiscon_moregroups_109.adm
