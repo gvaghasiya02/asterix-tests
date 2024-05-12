@@ -48,14 +48,6 @@ if os.path.exists(csv_filename):
 else:
     mode = 'w'  # Write mode
 
-with open(csv_filename, mode=mode, newline='') as file:
-    writer = csv.DictWriter(file, fieldnames=header)
-    
-    # If the file is newly created, write the header
-    if mode == 'w':
-        writer.writeheader()
-        print(f"header writing done to {csv_filename}")
-
 for query in queries:
     # Number of runs
     num_runs = 11
@@ -97,7 +89,15 @@ for query in queries:
             metrics = response2.json().get("metrics", {})
             all_metrics_opt.append(metrics)
 
-            print(f"Optimized Run {run} , {data2['statement']} - Execution Time: {metrics.get('executionTime', 'N/A')}")    
+            print(f"Optimized Run {run} , {data2['statement']} - Execution Time: {metrics.get('executionTime', 'N/A')}")   
+
+    with open(csv_filename, mode=mode, newline='') as file:
+        writer = csv.DictWriter(file, fieldnames=header)
+        
+        # If the file is newly created, write the header
+        if mode == 'w':
+            writer.writeheader()
+            print(f"header writing done to {csv_filename}") 
 
         # Write data for the last 10 runs
         for run, metrics in enumerate(all_metrics[-10:], start=1):
