@@ -6,3 +6,13 @@ USE wiscon106; SELECT hundredkgroups, COUNT(hundredkgroups) AS count FROM wiscon
 USE wiscon106; SELECT milliongroups, COUNT(milliongroups) AS count FROM wiscondef106 GROUP BY wiscondef106.milliongroups;
 USE wiscon106; SELECT similarstring, COUNT(similarstring) AS count FROM wiscondef106 GROUP BY wiscondef106.similarstring;
 USE wiscon106; SELECT variablelengthstring, COUNT(variablelengthstring) AS count FROM wiscondef106 GROUP BY wiscondef106.variablelengthstring;
+USE wiscon106; SELECT variablelengthstring,milliongroups, COUNT(*) AS count FROM wiscondef106 GROUP BY wiscondef106.variablelengthstring, wiscondef106.milliongroups;
+USE wiscon106; SELECT similarstring,milliongroups, COUNT(*) AS count FROM wiscondef106 GROUP BY wiscondef106.similarstring, wiscondef106.milliongroups;
+USE wiscon106; SELECT ten, SUM(ten) AS SUM FROM wiscondef106 GROUP BY wiscondef106.ten;
+USE wiscon106; SELECT hundred, SUM(hundred) AS SUM FROM wiscondef106 GROUP BY wiscondef106.hundred;
+USE wiscon106; SELECT kgroups, SUM(kgroups) AS SUM FROM wiscondef106 GROUP BY wiscondef106.kgroups;
+USE wiscon106; SELECT tenkgroups, SUM(tenkgroups) AS SUM FROM wiscondef106 GROUP BY wiscondef106.tenkgroups;
+USE wiscon106; SELECT hundredkgroups, SUM(hundredkgroups) AS SUM FROM wiscondef106 GROUP BY wiscondef106.hundredkgroups;
+USE wiscon106; SELECT milliongroups, SUM(milliongroups) AS SUM FROM wiscondef106 GROUP BY wiscondef106.milliongroups;
+USE wiscon106; SELECT variablelengthstring,milliongroups, SUM(milliongroups) AS SUM FROM wiscondef106 GROUP BY wiscondef106.variablelengthstring, wiscondef106.milliongroups;
+USE wiscon106; SELECT similarstring,milliongroups, SUM(milliongroups) AS SUM FROM wiscondef106 GROUP BY wiscondef106.similarstring, wiscondef106.milliongroups;
