@@ -44,8 +44,8 @@ for run in range(1, num_runs + 1):
         print(f"Cache clear Run {run} - Execution Time: {metrics.get('executionTime', 'N/A')}")
         
     response1 = requests.post(url, headers=headers, data=data1)
-    if response.status_code == 200:
-        metrics = response.json().get("metrics", {})
+    if response1.status_code == 200:
+        metrics = response1.json().get("metrics", {})
         all_metrics.append(metrics)
         
         print(f"Non Optimized Run {run} , {data1['statement']}- Execution Time: {metrics.get('executionTime', 'N/A')}")
