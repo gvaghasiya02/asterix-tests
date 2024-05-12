@@ -65,7 +65,7 @@ for run in range(1, num_runs + 1):
     
 
 # Export metrics to CSV
-header = ["Quey","Run", "ElapsedTime", "ExecutionTime", "CompileTime", "QueueWaitTime", "ResultCount", "ResultSize", "ProcessedObjects"]
+header = ["Quey", "Run", "ElapsedTime", "ExecutionTime", "CompileTime", "QueueWaitTime", "ResultCount", "ResultSize", "ProcessedObjects","bufferCacheHitRatio","bufferCachePageReadCount"]
 
 with open(csv_filename, mode='w', newline='') as file:
     writer = csv.DictWriter(file, fieldnames=header)
@@ -84,7 +84,9 @@ with open(csv_filename, mode='w', newline='') as file:
             "QueueWaitTime": metrics.get('queueWaitTime', 'N/A'),
             "ResultCount": metrics.get('resultCount', 'N/A'),
             "ResultSize": metrics.get('resultSize', 'N/A'),
-            "ProcessedObjects": metrics.get('processedObjects', 'N/A')
+            "ProcessedObjects": metrics.get('processedObjects', 'N/A'),
+            "bufferCacheHitRatio": metrics.get('bufferCacheHitRatio', 'N/A'),
+            "bufferCachePageReadCount": metrics.get('bufferCachePageReadCount', 'N/A')
         })
     
     for run, metrics in enumerate(all_metrics_opt[-10:], start=1):
@@ -97,7 +99,9 @@ with open(csv_filename, mode='w', newline='') as file:
             "QueueWaitTime": metrics.get('queueWaitTime', 'N/A'),
             "ResultCount": metrics.get('resultCount', 'N/A'),
             "ResultSize": metrics.get('resultSize', 'N/A'),
-            "ProcessedObjects": metrics.get('processedObjects', 'N/A')
+            "ProcessedObjects": metrics.get('processedObjects', 'N/A'),
+            "bufferCacheHitRatio": metrics.get('bufferCacheHitRatio', 'N/A'),
+            "bufferCachePageReadCount": metrics.get('bufferCachePageReadCount', 'N/A')
         })
 
 print(f"Metrics exported to {csv_filename}")
