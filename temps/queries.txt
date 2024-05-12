@@ -1,0 +1,6 @@
+USE wiscon106; SELECT ten, COUNT(ten) AS count FROM wiscondef106 GROUP BY wiscondef106.ten;
+USE wiscon106; SELECT hundred, COUNT(hundred) AS count FROM wiscondef106 GROUP BY wiscondef106.hundred;
+USE wiscon106; SELECT kgroups, COUNT(kgroups) AS count FROM wiscondef106 GROUP BY wiscondef106.kgroups;
+USE wiscon106; SELECT tenkgroups, COUNT(tenkgroups) AS count FROM wiscondef106 GROUP BY wiscondef106.tenkgroups;
+USE wiscon106; SELECT hundredkgroups, COUNT(hundredkgroups) AS count FROM wiscondef106 GROUP BY wiscondef106.hundredkgroups;
+USE wiscon106; SELECT milliongroups, COUNT(milliongroups) AS count FROM wiscondef106 GROUP BY wiscondef106.milliongroups;
