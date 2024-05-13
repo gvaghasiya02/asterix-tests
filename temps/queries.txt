@@ -5,6 +5,7 @@ USE wiscon106; SELECT tenkgroups, COUNT(tenkgroups) AS count FROM wiscondef106 G
 USE wiscon106; SELECT hundredkgroups, COUNT(hundredkgroups) AS count FROM wiscondef106 GROUP BY wiscondef106.hundredkgroups;
 USE wiscon106; SELECT milliongroups, COUNT(milliongroups) AS count FROM wiscondef106 GROUP BY wiscondef106.milliongroups;
 USE wiscon106; SELECT similarstring, COUNT(similarstring) AS count FROM wiscondef106 GROUP BY wiscondef106.similarstring;
+USE wiscon106; SELECT normalstring, COUNT(normalstring) AS count FROM wiscondef106 GROUP BY wiscondef106.normalstring;
 USE wiscon106; SELECT variablelengthstring, COUNT(variablelengthstring) AS count FROM wiscondef106 GROUP BY wiscondef106.variablelengthstring;
 USE wiscon106; SELECT variablelengthstring,milliongroups, COUNT(*) AS count FROM wiscondef106 GROUP BY wiscondef106.variablelengthstring, wiscondef106.milliongroups;
 USE wiscon106; SELECT similarstring,milliongroups, COUNT(*) AS count FROM wiscondef106 GROUP BY wiscondef106.similarstring, wiscondef106.milliongroups;
@@ -23,6 +24,7 @@ USE wiscon107; SELECT tenkgroups, COUNT(tenkgroups) AS count FROM wiscondef107 G
 USE wiscon107; SELECT hundredkgroups, COUNT(hundredkgroups) AS count FROM wiscondef107 GROUP BY wiscondef107.hundredkgroups;
 USE wiscon107; SELECT milliongroups, COUNT(milliongroups) AS count FROM wiscondef107 GROUP BY wiscondef107.milliongroups;
 USE wiscon107; SELECT similarstring, COUNT(similarstring) AS count FROM wiscondef107 GROUP BY wiscondef107.similarstring;
+USE wiscon106; SELECT normalstring, COUNT(normalstring) AS count FROM wiscondef107 GROUP BY wiscondef107.normalstring;
 USE wiscon107; SELECT variablelengthstring, COUNT(variablelengthstring) AS count FROM wiscondef107 GROUP BY wiscondef107.variablelengthstring;
 USE wiscon107; SELECT variablelengthstring,milliongroups, COUNT(*) AS count FROM wiscondef107 GROUP BY wiscondef107.variablelengthstring, wiscondef107.milliongroups;
 USE wiscon107; SELECT similarstring,milliongroups, COUNT(*) AS count FROM wiscondef107 GROUP BY wiscondef107.similarstring, wiscondef107.milliongroups;
@@ -41,6 +43,7 @@ USE wiscon108; SELECT tenkgroups, COUNT(tenkgroups) AS count FROM wiscondef108 G
 USE wiscon108; SELECT hundredkgroups, COUNT(hundredkgroups) AS count FROM wiscondef108 GROUP BY wiscondef108.hundredkgroups;
 USE wiscon108; SELECT milliongroups, COUNT(milliongroups) AS count FROM wiscondef108 GROUP BY wiscondef108.milliongroups;
 USE wiscon108; SELECT similarstring, COUNT(similarstring) AS count FROM wiscondef108 GROUP BY wiscondef108.similarstring;
+USE wiscon106; SELECT normalstring, COUNT(normalstring) AS count FROM wiscondef108 GROUP BY wiscondef108.normalstring;
 USE wiscon108; SELECT variablelengthstring, COUNT(variablelengthstring) AS count FROM wiscondef108 GROUP BY wiscondef108.variablelengthstring;
 USE wiscon108; SELECT variablelengthstring,milliongroups, COUNT(*) AS count FROM wiscondef108 GROUP BY wiscondef108.variablelengthstring, wiscondef108.milliongroups;
 USE wiscon108; SELECT similarstring,milliongroups, COUNT(*) AS count FROM wiscondef108 GROUP BY wiscondef108.similarstring, wiscondef108.milliongroups;
