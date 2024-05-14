@@ -23,3 +23,15 @@ wait
 java -jar ./target/wisconsin-datagen.jar writer=file workload=Default.json  filesize=65536
 wait
 cp ./outputp_0.adm ~/DBIS/data/wiscondef64gb.adm
+wait
+java -jar ./target/wisconsin-datagen.jar writer=file workload=Default.json  filesize=131072
+wait
+cp ./outputp_0.adm ~/DBIS/data/wiscondef128gb.adm
+wait
+java -jar ./target/wisconsin-datagen.jar writer=file workload=Default.json  filesize=262144
+wait
+cp ./outputp_0.adm ~/DBIS/data/wiscondef256gb.adm
+wait
+java -jar ./target/wisconsin-datagen.jar writer=file workload=Default.json  filesize=524288
+wait
+cp ./outputp_0.adm ~/DBIS/data/wiscondef512gb.adm
