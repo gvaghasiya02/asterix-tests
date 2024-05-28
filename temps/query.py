@@ -2,7 +2,7 @@ import requests
 import csv
 import json
 
-url = "http://10.16.229.108:19002/query/service"
+url = "http://10.16.229.109:19002/query/service"
 
 headers = {
     "Content-Type": "application/x-www-form-urlencoded"
