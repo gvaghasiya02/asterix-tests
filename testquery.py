@@ -8,25 +8,7 @@ headers = {
 
 # Define data for the query
 data = {
-"statement": "SET `compiler.optimize.groupby` 'true'; USE wiscon; SELECT * FROM wiscondef LIMIT 1;",
-    "pretty": "true",
-    "client_context_id": "xyz"
-}
-
-response = requests.post(url, headers=headers, data=data)
-print(response.text)
-
-data = {
-"statement": "SET `compiler.optimize.groupby` 'true'; USE wisconsmall; SELECT * FROM wiscondefsmall LIMIT 1;",
-    "pretty": "true",
-    "client_context_id": "xyz"
-}
-
-response = requests.post(url, headers=headers, data=data)
-print(response.text)
-
-data = {
-"statement": "SET `compiler.optimize.groupby` 'true'; USE filler; SELECT * FROM wisconfiller LIMIT 1;",
+    "statement": "SET `compiler.optimize.groupby` 'true'; USE wiscon; SELECT * FROM wiscondef LIMIT 1;",
     "pretty": "true",
     "client_context_id": "xyz"
 }

@@ -17,19 +17,13 @@ def read_queries(filename):
 # Read queries from the text file
 queries = read_queries('queries.txt')
 
-data1 = {
+querydata = {
     "statement": "SET `compiler.optimize.groupby` 'false';USE wiscon106; SELECT ten, COUNT(ten) AS count FROM wiscondef106 GROUP BY wiscondef106.ten;",
     "pretty": "true",
     "client_context_id": "xyz"
 }
 
-data2 = {
-    "statement": "SET `compiler.optimize.groupby` 'true';USE wiscon106; SELECT ten, COUNT(ten) AS count FROM wiscondef106 GROUP BY wiscondef106.ten;",
-    "pretty": "true",
-    "client_context_id": "xyz"
-}
-
-data= {
+fillerdata= {
     "statement": "USE filler; SELECT COUNT(*) FROM wisconfiller;",
     "pretty": "true",
     "client_context_id": "xyz"
@@ -55,41 +49,25 @@ for query in queries:
     # List to store metrics for each run
     all_metrics = []
 
-    all_metrics_opt = []
-
     # Populating queries
 
-    data1["statement"] = "SET `compiler.optimize.groupby` 'false';"+query.strip()
-    data2["statement"] = "SET `compiler.optimize.groupby` 'true';"+query.strip()
+    querydata["statement"] = query.strip()
 
     # Ignore the first run
     for run in range(1, num_runs + 1):
 
-        response=requests.post(url, headers=headers, data=data)
+        response=requests.post(url, headers=headers, data=fillerdata)
         if response.status_code == 200:
             metrics = response.json().get("metrics", {})
             
             print(f"Cache clear Run {run} - Execution Time: {metrics.get('executionTime', 'N/A')}")
             
-        response1 = requests.post(url, headers=headers, data=data1)
-        if response1.status_code == 200:
-            metrics = response1.json().get("metrics", {})
+        query_response = requests.post(url, headers=headers, data=querydata)
+        if query_response.status_code == 200:
+            metrics = query_response.json().get("metrics", {})
             all_metrics.append(metrics)
             
-            print(f"Non Optimized Run {run} , {data1['statement']}- Execution Time: {metrics.get('executionTime', 'N/A')}")
-
-        response=requests.post(url, headers=headers, data=data)
-        if response.status_code == 200:
-            metrics = response.json().get("metrics", {})
-            
-            print(f"Cache clear Run {run} - Execution Time: {metrics.get('executionTime', 'N/A')}")
-
-        response2 = requests.post(url, headers=headers, data=data2)
-        if response2.status_code == 200:
-            metrics = response2.json().get("metrics", {})
-            all_metrics_opt.append(metrics)
-
-            print(f"Optimized Run {run} , {data2['statement']} - Execution Time: {metrics.get('executionTime', 'N/A')}")   
+            print(f"Query Run {run} , {querydata['statement']}- Execution Time: {metrics.get('executionTime', 'N/A')}") 
 
     with open(csv_filename, mode=mode, newline='') as file:
         writer = csv.DictWriter(file, fieldnames=header)
@@ -102,7 +80,7 @@ for query in queries:
         # Write data for the last 10 runs
         for run, metrics in enumerate(all_metrics[-10:], start=1):
             writer.writerow({
-                "Query":data1['statement'],
+                "Query":querydata['statement'],
                 "Run": run,
                 "ElapsedTime": metrics.get('elapsedTime', 'N/A'),
                 "ExecutionTime": metrics.get('executionTime', 'N/A'),
