@@ -4,7 +4,7 @@
 #include <sys/mman.h>
 
 int main() {
-    long int alloc_size = 54L * 1024 * 1024 * 1024;  // 16 GB
+    long int alloc_size = 50L * 1024 * 1024 * 1024;  // 16 GB
     char *memory = (char *)malloc(alloc_size);  // Use malloc instead of calloc
 
     if (memory == NULL) {
