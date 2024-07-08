@@ -8,7 +8,7 @@ headers = {
 
 # Define data for the query
 data = {
-    "statement": "SET `compiler.optimize.groupby` 'true'; USE wiscon; SELECT * FROM wiscondef LIMIT 1;",
+    "statement": "USE tweetverse; SELECT COUNT(*) FROM tweetsdataset;",
     "pretty": "true",
     "client_context_id": "xyz"
 }
