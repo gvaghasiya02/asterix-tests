@@ -11,8 +11,8 @@ def convert_to_milliseconds(time_str):
         raise ValueError("Invalid time format")
 
 def main():
-    input_file = "input.csv"
-    output_file = "res.csv"
+    input_file = "query_metrics.csv"
+    output_file = "avg.csv"
 
     query_exec_times = {}
 
