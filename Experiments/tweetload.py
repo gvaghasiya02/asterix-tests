@@ -35,11 +35,11 @@ def load_json_files(directory):
     for filename in sorted(os.listdir(directory)):
         if filename.endswith(".json"):
             file_path = os.path.join(directory, filename)
-
+            print(file_path)
             # Define the load query
-            load_query = f"""
-            use tweetverse;
-            copy dataset tweetsdataset from localfs path ('10.16.229.110://{file_path}') with {'format':'json'};"""
+            load_query = "use tweetverse;copy tweetsdataset from localfs path ('10.16.229.110://"
+            load_query+=file_path
+            load_query+="') with {'format':'json'};"
 
             # Data for the load query
             data = {
