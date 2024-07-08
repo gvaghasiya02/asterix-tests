@@ -92,21 +92,5 @@ for query in queries:
                 "bufferCacheHitRatio": metrics.get('bufferCacheHitRatio', 'N/A'),
                 "bufferCachePageReadCount": metrics.get('bufferCachePageReadCount', 'N/A')
             })
-        
-        for run, metrics in enumerate(all_metrics_opt[-10:], start=1):
-            writer.writerow({
-                "Query":data2['statement'],
-                "Run": run,
-                "ElapsedTime": metrics.get('elapsedTime', 'N/A'),
-                "ExecutionTime": metrics.get('executionTime', 'N/A'),
-                "CompileTime": metrics.get('compileTime', 'N/A'),
-                "QueueWaitTime": metrics.get('queueWaitTime', 'N/A'),
-                "ResultCount": metrics.get('resultCount', 'N/A'),
-                "ResultSize": metrics.get('resultSize', 'N/A'),
-                "ProcessedObjects": metrics.get('processedObjects', 'N/A'),
-                "bufferCacheHitRatio": metrics.get('bufferCacheHitRatio', 'N/A'),
-                "bufferCachePageReadCount": metrics.get('bufferCachePageReadCount', 'N/A')
-            })
 
     print(f"Metrics added to {csv_filename}")
-
