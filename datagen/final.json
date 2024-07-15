@@ -106,6 +106,13 @@
       "word": true
     },
     {
+      "name":"similarsmallstring",
+      "type":"string",
+      "length": "10",
+      "order":"random",
+      "word": true
+    },
+    {
       "name":"variablelengthstring",
       "type":"string",
       "bernoulliDistribution": true,
