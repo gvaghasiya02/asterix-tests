@@ -1,6 +1,0 @@
-set `compiler.optimize.groupby` 'true';use tweetverse;select uname, count(*) as c from tweetsdataset t where (some ht in t.entities . hashtags satisfies lowercase(ht . text) = "jobs") GROUP BY user.name as uname ORDER BY c DESC LIMIT 10;
-set `compiler.optimize.groupby` 'false';use tweetverse;select uname, count(*) as c from tweetsdataset t where (some ht in t.entities . hashtags satisfies lowercase(ht . text) = "jobs") GROUP BY user.name as uname ORDER BY c DESC LIMIT 10;
-use tweetverse;select uname, count(*) as c from tweetsdataset t where (some ht in t.entities . hashtags satisfies lowercase(ht . text) = "jobs") /*+ hash */ GROUP BY user.name as uname ORDER BY c DESC LIMIT 10;
-set `compiler.optimize.groupby` 'true';use tweetverse;select uname, count(*) as c from tweetsdataset t GROUP BY user.name as uname ORDER BY c DESC LIMIT 100;
-set `compiler.optimize.groupby` 'false';use tweetverse;select uname, count(*) as c from tweetsdataset t GROUP BY user.name as uname ORDER BY c DESC LIMIT 100;
-use tweetverse;select uname, count(*) as c from tweetsdataset t /*+ hash */ GROUP BY user.name as uname ORDER BY c DESC LIMIT 100;
