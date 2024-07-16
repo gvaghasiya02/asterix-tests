@@ -1,6 +1,6 @@
 use tweetverse;select uname, count(*) as c from tweetsdataset t where (some ht in t.entities . hashtags satisfies lowercase(ht . text) = "jobs") GROUP BY user.name as uname ORDER BY c DESC LIMIT 10;
 use tweetverse;select uname, count(*) as c from tweetsdataset t GROUP BY user.name as uname ORDER BY c DESC LIMIT 100;
-use tweetverse;select uname, count(*) as c from tweetsdataset t where (some ht in t.entities . hashtags satisfies lowercase(ht . text) = ""jobs"") GROUP BY user.name as uname;
+use tweetverse;select uname, count(*) as c from tweetsdataset t where (some ht in t.entities . hashtags satisfies lowercase(ht . text) = "jobs") GROUP BY user.name as uname;
 use tweetverse;select language, count(*) as c from tweetsdataset t GROUP BY t.lang as language;
 use tweetverse; select uname, sum(t.retweeted_status.retweet_count) as c from tweetsdataset t GROUP BY user.name as uname ORDER BY c DESC LIMIT 100;
 use tweetverse;select uname, count(t.retweeted_status.retweet_count) as c from tweetsdataset t GROUP BY user.name as uname ORDER BY c DESC LIMIT 100;
