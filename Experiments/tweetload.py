@@ -2,7 +2,7 @@ import requests
 import os
 
 # Set up the base parameters
-url = "http://10.16.229.110:19002/query/service"
+url = "http://localhost:19002/query/service"
 headers = {
     "Content-Type": "application/x-www-form-urlencoded"
 }
@@ -37,7 +37,7 @@ def load_json_files(directory):
             file_path = os.path.join(directory, filename)
             print(file_path)
             # Define the load query
-            load_query = "use tweetverse;copy tweetsdataset from localfs path ('10.16.229.110://"
+            load_query = "use tweetverse;copy tweetsdataset from localfs path ('localhost://"
             load_query+=file_path
             load_query+="') with {'format':'json'};"
 
