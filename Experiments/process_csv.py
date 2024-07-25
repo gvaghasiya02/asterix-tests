@@ -29,5 +29,9 @@ def process_query(query):
 # Apply the function to the 'Query' column
 data[['realquery', 'size(gb)', 'type']] = data['Query'].apply(lambda x: pd.Series(process_query(x)))
 
+data['nc'] = 2 #chnage based on requirement
+data['dp'] = 1 #chnage based on requirement
+data['groupmemory(MB)'] = 32 #chnage based on requirement
+
 # Write the new DataFrame to a CSV file
 data.to_csv('processed_queries.csv', index=False)
