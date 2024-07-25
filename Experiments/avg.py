@@ -1,4 +1,5 @@
 import csv
+import numpy as np
 
 def convert_to_milliseconds(time_str):
     if time_str.endswith("ns"):
@@ -10,31 +11,70 @@ def convert_to_milliseconds(time_str):
     else:
         raise ValueError("Invalid time format")
 
+def convert_to_float(fraction_str):
+    try:
+        return float(fraction_str.strip('%')) / 100
+    except ValueError:
+        return 0.0
+
 def main():
     input_file = "query_metrics.csv"
-    output_file = "avg.csv"
+    output_file = "query_statistics.csv"
 
-    query_exec_times = {}
+    stats = {}
 
     with open(input_file, newline="") as csvfile:
-        reader = csv.reader(csvfile)
-        next(reader)  # skip header
+        reader = csv.DictReader(csvfile)
         for row in reader:
-            query = row[0]
-            execution_time = row[3]
-            execution_time_ms = convert_to_milliseconds(execution_time)
+            query = row['Query']
+            if query not in stats:
+                stats[query] = {
+                    'ExecutionTime': [],
+                    'ElapsedTime': [],
+                    'CompileTime': [],
+                    'QueueWaitTime': [],
+                    'ResultCount': [],
+                    'ResultSize': [],
+                    'ProcessedObjects': [],
+                    'bufferCacheHitRatio': [],
+                    'bufferCachePageReadCount': []
+                }
 
-            if query in query_exec_times:
-                query_exec_times[query].append(execution_time_ms)
-            else:
-                query_exec_times[query] = [execution_time_ms]
+            stats[query]['ExecutionTime'].append(convert_to_milliseconds(row['ExecutionTime']))
+            stats[query]['ElapsedTime'].append(convert_to_milliseconds(row['ElapsedTime']))
+            stats[query]['CompileTime'].append(convert_to_milliseconds(row['CompileTime']))
+            stats[query]['QueueWaitTime'].append(convert_to_milliseconds(row['QueueWaitTime']))
+            stats[query]['ResultCount'].append(float(row['ResultCount']))
+            stats[query]['ResultSize'].append(float(row['ResultSize']))
+            stats[query]['ProcessedObjects'].append(float(row['ProcessedObjects']))
+            stats[query]['bufferCacheHitRatio'].append(convert_to_float(row['bufferCacheHitRatio']))
+            stats[query]['bufferCachePageReadCount'].append(float(row['bufferCachePageReadCount']))
 
     with open(output_file, mode="w", newline="") as csvfile:
-        writer = csv.writer(csvfile)
-        writer.writerow(["Query", "AverageExecutionTime(ms)"])
-        for query, exec_times in query_exec_times.items():
-            avg_exec_time_ms = sum(exec_times) / len(exec_times)
-            writer.writerow([query, avg_exec_time_ms])
+        fieldnames = ['Query', 'AverageExecutionTime(ms)', 'StdDevExecutionTime(ms)',
+                      'AverageElapsedTime(ms)', 'AverageCompileTime(ms)', 'AverageQueueWaitTime(ms)',
+                      'AverageResultCount', 'AverageResultSize', 'AverageProcessedObjects',
+                      'AverageBufferCacheHitRatio', 'AverageBufferCachePageReadCount']
+        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+        writer.writeheader()
+
+        for query, data in stats.items():
+            averages = {key: np.mean(values) for key, values in data.items()}
+            std_devs = {key: np.std(values) for key, values in data.items()}
+
+            writer.writerow({
+                'Query': query,
+                'AverageExecutionTime(ms)': averages['ExecutionTime'],
+                'StdDevExecutionTime(ms)': std_devs['ExecutionTime'],
+                'AverageElapsedTime(ms)': averages['ElapsedTime'],
+                'AverageCompileTime(ms)': averages['CompileTime'],
+                'AverageQueueWaitTime(ms)': averages['QueueWaitTime'],
+                'AverageResultCount': averages['ResultCount'],
+                'AverageResultSize': averages['ResultSize'],
+                'AverageProcessedObjects': averages['ProcessedObjects'],
+                'AverageBufferCacheHitRatio': averages['bufferCacheHitRatio'],
+                'AverageBufferCachePageReadCount': averages['bufferCachePageReadCount']
+            })
 
 if __name__ == "__main__":
     main()
