@@ -29,9 +29,30 @@ def process_query(query):
 # Apply the function to the 'Query' column
 data[['realquery', 'size(gb)', 'type']] = data['Query'].apply(lambda x: pd.Series(process_query(x)))
 
-data['nc'] = 2 #chnage based on requirement
-data['dp'] = 1 #chnage based on requirement
-data['groupmemory(MB)'] = 32 #chnage based on requirement
+def extract_groupby_attributes(query):
+    # Find the part of the query after 'group by'
+    group_by_part = query.split('group by')[-1].strip()
+    # Extract the attributes, ignoring any SQL following the attribute list
+    attributes = group_by_part.split(';')[0].strip()
+    cleaned_attributes = ','.join(attr.split('.')[-1] for attr in attributes.split(','))
+    return cleaned_attributes
+
+# Function to extract the aggregation type from a query
+def extract_aggregate(query):
+    aggregates = ['sum', 'count', 'min', 'max']
+    for agg in aggregates:
+        if agg in query.lower():
+            return agg
+    return None
+
+# Apply functions to create new columns
+data['groupbyattribute'] = data['realquery'].apply(extract_groupby_attributes)
+data['aggregate'] = data['realquery'].apply(extract_aggregate)
+
+
+data['nc'] = 2
+data['dp'] = 1
+data['groupmemory(MB)'] = 32
 
 # Write the new DataFrame to a CSV file
 data.to_csv('processed_queries.csv', index=False)
