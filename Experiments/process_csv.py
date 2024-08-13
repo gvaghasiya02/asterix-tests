@@ -20,7 +20,7 @@ def process_query(query):
         type_ = 'unknown'
 
     # Extract and remove group memory setting if present
-    groupmemory_match = re.search(r"set `compiler.groupmemory` '(\d+)MB';", query)
+    groupmemory_match = re.search(r"set `compiler.groupmemory` '(\d+)mb';", query)
     groupmemory = groupmemory_match.group(1) if groupmemory_match else 32
     if groupmemory_match:
         query = query.replace(groupmemory_match.group(0), '').strip()  # Remove the groupmemory clause
