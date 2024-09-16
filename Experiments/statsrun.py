@@ -1,10 +1,9 @@
 import requests
 import pandas as pd
 import os
-
-import requests
 import csv
 import json
+import subprocess
 
 url = "http://localhost:19002/query/service"
 
@@ -24,46 +23,33 @@ querydata = {
     "client_context_id": "xyz"
 }
 
-import subprocess
 
-def copy_content_and_clear(remote_path, local_path, remote_host, remote_user):
+def consolidate_logs(local_log_path, remote_log_path, output_log_path, remote_host, remote_user):
     try:
         # Step 1: Clear the destination file
-        with open(local_path, 'w') as f:
+        with open(output_log_path, 'w') as f:
             f.truncate()
 
         # Step 2: Copy contents from remote file to local file
-        print(remote_path)
-        scp_command = f"sshpass -p 'dbis2023' scp {remote_user}@{remote_host}:{remote_path} {local_path}"
+        print(remote_log_path)
+        scp_command = f"sshpass -p 'dbis2023' scp {remote_user}@{remote_host}:{remote_log_path} {output_log_path}"
         subprocess.run(scp_command, check=True, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         print("Content copied successfully.")
-        # print("yyggggggg")
-        # with open(local_path, 'r') as f:
-        #     ss=f.readlines()
-        #     print(ss)
 
         # Step 3: Clear the contents of the original file on the remote host
-        clear_command = f"sshpass -p 'dbis2023' ssh {remote_user}@{remote_host} 'cat /dev/null > {remote_path}'"
+        clear_command = f"sshpass -p 'dbis2023' ssh {remote_user}@{remote_host} 'cat /dev/null > {remote_log_path}'"
         subprocess.run(clear_command, check=True, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         print("Original file contents cleared successfully.")
 
     except subprocess.CalledProcessError as e:
         print(f"Error during operations: {e.stderr}")
 
-# Example usage
-
-
-def consolidate_logs(local_log_path, remote_log_path, output_path):
-    copy_content_and_clear(remote_log_path, output_path, '10.16.229.106', 'dbis-nuc06')
-    with open(output_path, 'a') as outfile:
+    with open(output_log_path, 'a') as outfile:
         # Local log
         with open(local_log_path, 'r') as infile:
             outfile.write(infile.read())
 
         open(local_log_path, 'w').close()
-    # with open(output_path, 'r') as f:
-    #         ss=f.readlines()
-    #         print(ss)
 
 def process_log_file(filepath):
     processed_records = 0
@@ -105,14 +91,16 @@ def main():
     queries_path = 'queries.txt'
     output_log_path = 'path_to_log_file.txt'
     local_log_path = '/home/dbis-nuc10/asterixdb/logs/nc-1.log'
-    remote_log_path = '/home/dbis-nuc06/asterixdb/logs/nc-2.log'  # Adjust this path as needed
+    remote_log_path = '/home/dbis-nuc06/asterixdb/logs/nc-2.log'
+    remote_host = '10.16.229.106'
+    remote_user = 'dbis-nuc06'
 
     results = []
     queries = read_queries(queries_path)
     for query in queries:
         querydata["statement"] = query.strip()       
         response=requests.post(url, headers=headers, data=querydata)
-        consolidate_logs(local_log_path, remote_log_path, output_log_path)
+        consolidate_logs(local_log_path, remote_log_path, output_log_path, remote_host, remote_user)
         result = process_log_file(output_log_path)
         result['statement'] = query.strip()
         results.append(result)
