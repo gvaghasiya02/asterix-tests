@@ -5,7 +5,7 @@ import csv
 import json
 import subprocess
 
-url = "http://localhost:19002/query/service"
+url = "http://10.16.229.110:19002/query/service"
 
 headers = {
     "Content-Type": "application/x-www-form-urlencoded"
@@ -58,14 +58,16 @@ def process_log_file(filepath):
     sorttuplecount = 0
     totalcomp = 0
     aggregated_records_spill_to_network=0
+    collected_frames=0
+    timetocollect=0
 
     with open(filepath, 'r') as file:
         for line in file:
             if "Closing to OptimizeGroupWriter" in line:
                 parts = line.split()
-                processed_records += int(parts[parts.index("records") + 1])
-                processed_frames += int(parts[parts.index("aggregated") - 1][6:])
-                aggregated_records_spill_to_network += int(parts[parts.index("Closing") - 1])
+                processed_records += int(parts[parts.index("processedRecords") + 1])
+                processed_frames += int(parts[parts.index("processedFrames") + 1])
+                aggregated_records_spill_to_network += int(parts[parts.index("aggregatedRecords") + 1])
 
             if "bytes to /home" in line:
                 parts = line.split()
@@ -76,6 +78,11 @@ def process_log_file(filepath):
                 sorttuplecount += int(parts[parts.index("References") + 1])
                 totalcomp += int(parts[parts.index("Comparisions") + 1])
 
+            if "Garbage Collection" in line and "Hash table" in line:
+                parts = line.split()
+                collected_frames += int(parts[parts.index("Deallocated") + 1][7:])
+                timetocollect += int(parts[parts.index("time") + 1])
+
     # print(spilled_data_bytes,processed_frames,processed_records)
     return {
         "spilled_data_bytes": spilled_data_bytes,
@@ -83,7 +90,9 @@ def process_log_file(filepath):
         "processed_records": processed_records,
         "sorttuplecount": sorttuplecount,
         "totalcomp": totalcomp,
-        "aggregated_records_spill_to_network":aggregated_records_spill_to_network
+        "aggregated_records_spill_to_network":aggregated_records_spill_to_network,
+        "Collected_garbage_frames":collected_frames,
+        "Time_collect_garbage_frames":timetocollect
     }
 
 
