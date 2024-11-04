@@ -16,7 +16,7 @@ use tpcds;
 
 
 create type tpcds.store_returns_type as
- closed {
+  {
   sr_returned_date_sk : int64?,
   sr_return_time_sk : int64?,
   sr_item_sk : int64,
@@ -39,8 +39,13 @@ create type tpcds.store_returns_type as
   sr_net_loss : double?
 };
 
+create dataset store_returns(store_returns_type) primary key sr_item_sk, sr_ticket_number;
+
+load dataset store_returns using localfs ((`path`=`localhost:///home/dbis-nuc10/DBIS/data/benchmark/tpcds/store_returns.dat`),(`format`=`delimited-text`),(`delimiter`=`|`),(`null`=""));
+
+
 create type tpcds.date_dim_type as
- closed {
+  {
   d_date_sk : int64,
   d_date_id : string,
   d_date : string?,
@@ -71,13 +76,18 @@ create type tpcds.date_dim_type as
   d_current_year : string?
 };
 
+create dataset date_dim(date_dim_type) primary key d_date_sk;
+
+load dataset date_dim using localfs ((`path`=`localhost:///home/dbis-nuc10/DBIS/data/benchmark/tpcds/date_dim.dat`),(`format`=`delimited-text`),(`delimiter`=`|`),(`null`=""));
+
+
 create type tpcds.store_type as
- closed {
+  {
   s_store_sk : int64,
   s_store_id : string,
   s_rec_start_date : string?,
   s_rec_end_date : string?,
-  s_closed_date_sk : int64?,
+  s__date_sk : int64?,
   s_store_name : string?,
   s_number_employees : int64?,
   s_floor_space : int64?,
@@ -104,8 +114,13 @@ create type tpcds.store_type as
   s_tax_precentage : double?
 };
 
+create dataset store(store_type) primary key s_store_sk;
+
+load dataset store using localfs ((`path`=`localhost:///home/dbis-nuc10/DBIS/data/benchmark/tpcds/store.dat`),(`format`=`delimited-text`),(`delimiter`=`|`),(`null`=""));
+
+
 create type tpcds.customer_type as
- closed {
+  {
   c_customer_sk : int64,
   c_customer_id : string,
   c_current_cdemo_sk : int64?,
@@ -126,8 +141,13 @@ create type tpcds.customer_type as
   c_last_review_date : string?
 };
 
+create dataset customer(customer_type) primary key c_customer_sk;
+
+load dataset customer using localfs ((`path`=`localhost:///home/dbis-nuc10/DBIS/data/benchmark/tpcds/customer.dat`),(`format`=`delimited-text`),(`delimiter`=`|`),(`null`=""));
+
+
 create type tpcds.item_type as
- closed {
+  {
   i_item_sk : bigint,
   i_item_id : string,
   i_rec_start_date : string?,
@@ -152,8 +172,13 @@ create type tpcds.item_type as
   i_product_name : string?
 };
 
+create dataset item(item_type) primary key i_item_sk;
+
+load dataset item using localfs ((`path`=`localhost:///home/dbis-nuc10/DBIS/data/benchmark/tpcds/item.dat`),(`format`=`delimited-text`),(`delimiter`=`|`),(`null`=""));
+
+
 create type tpcds.store_sales_type as
- closed {
+  {
   ss_sold_date_sk:           bigint?,
   ss_sold_time_sk:           bigint?,
   ss_item_sk:                bigint,
@@ -179,8 +204,13 @@ create type tpcds.store_sales_type as
   ss_net_profit:             double?
 };
 
+create dataset store_sales(store_sales_type) primary key ss_item_sk, ss_ticket_number;
+
+load dataset store_sales using localfs ((`path`=`localhost:///home/dbis-nuc10/DBIS/data/benchmark/tpcds/store_sales.dat`),(`format`=`delimited-text`),(`delimiter`=`|`),(`null`=""));
+
+
 create type tpcds.catalog_page_type as
- closed {
+  {
   cp_catalog_page_sk:         bigint,
   cp_catalog_page_id:         string,
   cp_start_date_sk:           bigint?,
@@ -192,8 +222,13 @@ create type tpcds.catalog_page_type as
   cp_type:                    string?
 };
 
+create dataset catalog_page(catalog_page_type) primary key cp_catalog_page_sk;
+
+load dataset catalog_page using localfs ((`path`=`localhost:///home/dbis-nuc10/DBIS/data/benchmark/tpcds/catalog_page.dat`),(`format`=`delimited-text`),(`delimiter`=`|`),(`null`=""));
+
+
 create type tpcds.catalog_sales_type as
- closed {
+  {
   cs_sold_date_sk:           bigint?,
   cs_sold_time_sk:           bigint?,
   cs_ship_date_sk:           bigint?,
@@ -230,8 +265,13 @@ create type tpcds.catalog_sales_type as
   cs_net_profit:             double?
 };
 
+create dataset catalog_sales(catalog_sales_type) primary key cs_item_sk, cs_order_number;
+
+load dataset catalog_sales using localfs ((`path`=`localhost:///home/dbis-nuc10/DBIS/data/benchmark/tpcds/catalog_sales.dat`),(`format`=`delimited-text`),(`delimiter`=`|`),(`null`=""));
+
+
 create type tpcds.catalog_returns_type as
- closed {
+  {
   cr_returned_date_sk : bigint?,
   cr_returned_time_sk : bigint?,
   cr_item_sk : bigint,
@@ -261,8 +301,13 @@ create type tpcds.catalog_returns_type as
   cr_net_loss : double?
 };
 
+create dataset catalog_returns(catalog_returns_type) primary key cr_item_sk, cr_order_number;
+
+load dataset catalog_returns using localfs ((`path`=`localhost:///home/dbis-nuc10/DBIS/data/benchmark/tpcds/catalog_returns.dat`),(`format`=`delimited-text`),(`delimiter`=`|`),(`null`=""));
+
+
 create type tpcds.web_site_type as
- closed {
+  {
   web_site_sk:               bigint,
   web_site_id:               string,
   web_rec_start_date:        string?,
@@ -291,8 +336,13 @@ create type tpcds.web_site_type as
   web_tax_percentage:        double?
 };
 
+create dataset web_site(web_site_type) primary key web_site_sk;
+
+load dataset web_site using localfs ((`path`=`localhost:///home/dbis-nuc10/DBIS/data/benchmark/tpcds/web_site.dat`),(`format`=`delimited-text`),(`delimiter`=`|`),(`null`=""));
+
+
 create type tpcds.web_sales_type as
- closed {
+  {
   ws_sold_date_sk : int64?,
   ws_sold_time_sk : int64?,
   ws_ship_date_sk : int64?,
@@ -329,8 +379,13 @@ create type tpcds.web_sales_type as
   ws_net_profit : double?
 };
 
+create dataset web_sales(web_sales_type) primary key ws_item_sk, ws_order_number;
+
+load dataset web_sales using localfs ((`path`=`localhost:///home/dbis-nuc10/DBIS/data/benchmark/tpcds/web_sales.dat`),(`format`=`delimited-text`),(`delimiter`=`|`),(`null`=""));
+
+
 create type tpcds.web_returns_type as
- closed {
+  {
   wr_returned_date_sk : bigint?,
   wr_returned_time_sk : bigint?,
   wr_item_sk : bigint,
@@ -357,8 +412,13 @@ create type tpcds.web_returns_type as
   wr_net_loss: double?
 };
 
+create dataset web_returns(web_returns_type) primary key wr_item_sk, wr_order_number;
+
+load dataset web_returns using localfs ((`path`=`localhost:///home/dbis-nuc10/DBIS/data/benchmark/tpcds/web_returns.dat`),(`format`=`delimited-text`),(`delimiter`=`|`),(`null`=""));
+
+
 create type tpcds.customer_demographics_type as
- closed {
+  {
   cd_demo_sk : bigint,
   cd_gender : string?,
   cd_marital_status : string?,
@@ -370,8 +430,13 @@ create type tpcds.customer_demographics_type as
   cd_dep_college_count : bigint?
 };
 
+create dataset customer_demographics(customer_demographics_type) primary key cd_demo_sk;
+
+load dataset customer_demographics using localfs ((`path`=`localhost:///home/dbis-nuc10/DBIS/data/benchmark/tpcds/customer_demographics.dat`),(`format`=`delimited-text`),(`delimiter`=`|`),(`null`=""));
+
+
 create type tpcds.promotion_type as
- closed {
+  {
   p_promo_sk : bigint,
   p_promo_id : string,
   p_start_date_sk : bigint?,
@@ -393,14 +458,24 @@ create type tpcds.promotion_type as
   p_discount_active : string?
 };
 
+create dataset promotion(promotion_type) primary key p_promo_sk;
+
+load dataset promotion using localfs ((`path`=`localhost:///home/dbis-nuc10/DBIS/data/benchmark/tpcds/promotion.dat`),(`format`=`delimited-text`),(`delimiter`=`|`),(`null`=""));
+
+
 create type tpcds.reason_type as
- closed {
+  {
   r_reason_sk : int64,
   r_reason_id : string,
   r_reason_desc : string?
 };
 
-create type tpcds.customer_address_type as  closed {
+create dataset reason(reason_type) primary key r_reason_sk;
+
+load dataset reason using localfs ((`path`=`localhost:///home/dbis-nuc10/DBIS/data/benchmark/tpcds/reason.dat`),(`format`=`delimited-text`),(`delimiter`=`|`),(`null`=""));
+
+
+create type tpcds.customer_address_type as   {
   ca_address_sk : bigint,
   ca_address_id : string,
   ca_street_number : string?,
@@ -416,13 +491,18 @@ create type tpcds.customer_address_type as  closed {
   ca_location_type : string?
  };
 
+create dataset customer_address(customer_address_type) primary key ca_address_sk;
+
+load dataset customer_address using localfs ((`path`=`localhost:///home/dbis-nuc10/DBIS/data/benchmark/tpcds/customer_address.dat`),(`format`=`delimited-text`),(`delimiter`=`|`),(`null`=""));
+
+
 create type tpcds.call_center_type as
- closed {
+  {
   cc_call_center_sk : bigint,
   cc_call_center_id : string,
   cc_rec_start_date : string?,
   cc_rec_end_date : string?,
-  cc_closed_date_sk : bigint?,
+  cc__date_sk : bigint?,
   cc_open_date_sk : bigint?,
   cc_name : string?,
   cc_class : string?,
@@ -451,8 +531,13 @@ create type tpcds.call_center_type as
   cc_tax_percentage : double?
 };
 
+create dataset call_center(call_center_type) primary key cc_call_center_sk;
+
+load dataset call_center using localfs ((`path`=`localhost:///home/dbis-nuc10/DBIS/data/benchmark/tpcds/call_center.dat`),(`format`=`delimited-text`),(`delimiter`=`|`),(`null`=""));
+
+
 create type tpcds.household_demographics_type as
- closed {
+  {
   hd_demo_sk : bigint,
   hd_income_band_sk : bigint?,
   hd_buy_potential : string?,
@@ -460,16 +545,26 @@ create type tpcds.household_demographics_type as
   hd_vehicle_count : bigint?
 };
 
+create dataset household_demographics(household_demographics_type) primary key hd_demo_sk;
+
+load dataset household_demographics using localfs ((`path`=`localhost:///home/dbis-nuc10/DBIS/data/benchmark/tpcds/household_demographics.dat`),(`format`=`delimited-text`),(`delimiter`=`|`),(`null`=""));
+
+
 create type tpcds.inventory_type as
- closed {
+  {
   inv_date_sk : bigint,
   inv_item_sk : bigint,
   inv_warehouse_sk : bigint,
   inv_quantity_on_hand : bigint?
 };
 
+create dataset inventory(inventory_type) primary key inv_date_sk, inv_item_sk, inv_warehouse_sk;
+
+load dataset inventory using localfs ((`path`=`localhost:///home/dbis-nuc10/DBIS/data/benchmark/tpcds/inventory.dat`),(`format`=`delimited-text`),(`delimiter`=`|`),(`null`=""));
+
+
 create type tpcds.ship_mode_type as
- closed {
+  {
   sm_ship_mode_sk : bigint,
   sm_ship_mode_id : string,
   sm_type : string?,
@@ -478,8 +573,13 @@ create type tpcds.ship_mode_type as
   sm_contract : string?
 };
 
+create dataset ship_mode(ship_mode_type) primary key sm_ship_mode_sk;
+
+load dataset ship_mode using localfs ((`path`=`localhost:///home/dbis-nuc10/DBIS/data/benchmark/tpcds/ship_mode.dat`),(`format`=`delimited-text`),(`delimiter`=`|`),(`null`=""));
+
+
 create type tpcds.time_dim_type as
- closed {
+  {
   t_time_sk : bigint,
   t_time_id : string,
   t_time : bigint?,
@@ -492,8 +592,13 @@ create type tpcds.time_dim_type as
   t_meal_time : string?
 };
 
+create dataset time_dim(time_dim_type) primary key t_time_sk;
+
+load dataset time_dim using localfs ((`path`=`localhost:///home/dbis-nuc10/DBIS/data/benchmark/tpcds/time_dim.dat`),(`format`=`delimited-text`),(`delimiter`=`|`),(`null`=""));
+
+
 create type tpcds.warehouse_type as
- closed {
+  {
   w_warehouse_sk : bigint,
   w_warehouse_id : string,
   w_warehouse_name : string?,
@@ -510,8 +615,13 @@ create type tpcds.warehouse_type as
   w_gmt_offset : double?
 };
 
+create dataset warehouse(warehouse_type) primary key w_warehouse_sk;
+
+load dataset warehouse using localfs ((`path`=`localhost:///home/dbis-nuc10/DBIS/data/benchmark/tpcds/warehouse.dat`),(`format`=`delimited-text`),(`delimiter`=`|`),(`null`=""));
+
+
 create type tpcds.web_page_type as
- closed {
+  {
   wp_web_page_sk : int64,
   wp_web_page_id : string,
   wp_rec_start_date : string?,
@@ -528,109 +638,22 @@ create type tpcds.web_page_type as
   wp_max_ad_count : int64?
 };
 
+create dataset web_page(web_page_type) primary key wp_web_page_sk;
+
+load dataset web_page using localfs ((`path`=`localhost:///home/dbis-nuc10/DBIS/data/benchmark/tpcds/web_page.dat`),(`format`=`delimited-text`),(`delimiter`=`|`),(`null`=""));
+
+
 create type tpcds.income_band_type as
-    closed {    
+     {    
         ib_income_band_sk : int64,
         ib_lower_bound : int64?,
         ib_upper_bound : int64?
     };
 
-create dataset web_page (web_page_type) primary key wp_web_page_sk;
+create dataset income_band(income_band_type) primary key ib_income_band_sk;
 
-create dataset warehouse(warehouse_type) primary key w_warehouse_sk;
+load dataset income_band using localfs ((`path`=`localhost:///home/dbis-nuc10/DBIS/data/benchmark/tpcds/income_band.dat`),(`format`=`delimited-text`),(`delimiter`=`|`),(`null`=""));
 
-create dataset time_dim(time_dim_type) primary key t_time_sk;
-
-create dataset ship_mode(ship_mode_type) primary key sm_ship_mode_sk;
-
-create dataset inventory (inventory_type) primary key inv_date_sk, inv_item_sk, inv_warehouse_sk;
-
-create dataset household_demographics (household_demographics_type) primary key hd_demo_sk;
-
-create dataset call_center (call_center_type) primary key cc_call_center_sk;
-
-create dataset catalog_sales (catalog_sales_type) primary key cs_item_sk, cs_order_number;
-
-create dataset date_dim(date_dim_type) primary key d_date_sk;
-
-create dataset item(item_type) primary key i_item_sk;
-
-create dataset customer_address(customer_address_type) primary key ca_address_sk;
-
-create dataset store_sales (store_sales_type) primary key ss_item_sk, ss_ticket_number;
-
-create dataset store (store_type) primary key s_store_sk;
-
-create dataset customer (customer_type) primary key c_customer_sk;
-
-create dataset customer_demographics(customer_demographics_type) primary key cd_demo_sk;
-
-create dataset reason(reason_type) primary key r_reason_sk;
-
-create dataset promotion (promotion_type) primary key p_promo_sk;
-
-create dataset store_returns (store_returns_type) primary key sr_item_sk, sr_ticket_number;
-
-create dataset catalog_page (catalog_page_type) primary key cp_catalog_page_sk;
-
-create dataset catalog_returns (catalog_returns_type) primary key cr_item_sk, cr_order_number;
-
-create dataset web_site (web_site_type) primary key web_site_sk;
-
-create dataset web_sales (web_sales_type) primary key ws_item_sk, ws_order_number;
-
-create dataset web_returns (web_returns_type) primary key wr_item_sk, wr_order_number;
-
-create dataset income_band (income_band_type) primary key ib_income_band_sk;
-
- 
-load dataset call_center using localfs ((`path`=`localhost:///home/dbis-nuc10/DBIS/data/benchmark/tpcds/call_center.dat`),(`format`=`delimited-text`),(`delimiter`=`|`));
- 
-load dataset catalog_page using localfs ((`path`=`localhost:///home/dbis-nuc10/DBIS/data/benchmark/tpcds/catalog_page.dat`),(`format`=`delimited-text`),(`delimiter`=`|`));
- 
-load dataset catalog_returns using localfs ((`path`=`localhost:///home/dbis-nuc10/DBIS/data/benchmark/tpcds/catalog_returns.dat`),(`format`=`delimited-text`),(`delimiter`=`|`));
- 
-load dataset catalog_sales using localfs ((`path`=`localhost:///home/dbis-nuc10/DBIS/data/benchmark/tpcds/catalog_sales.dat`),(`format`=`delimited-text`),(`delimiter`=`|`));
- 
-load dataset customer using localfs ((`path`=`localhost:///home/dbis-nuc10/DBIS/data/benchmark/tpcds/customer.dat`),(`format`=`delimited-text`),(`delimiter`=`|`));
- 
-load dataset customer_address using localfs ((`path`=`localhost:///home/dbis-nuc10/DBIS/data/benchmark/tpcds/customer_address.dat`),(`format`=`delimited-text`),(`delimiter`=`|`));
- 
-load dataset customer_demographics using localfs ((`path`=`localhost:///home/dbis-nuc10/DBIS/data/benchmark/tpcds/customer_demographics.dat`),(`format`=`delimited-text`),(`delimiter`=`|`));
- 
-load dataset date_dim using localfs ((`path`=`localhost:///home/dbis-nuc10/DBIS/data/benchmark/tpcds/date_dim.dat`),(`format`=`delimited-text`),(`delimiter`=`|`));
- 
-load dataset household_demographics using localfs ((`path`=`localhost:///home/dbis-nuc10/DBIS/data/benchmark/tpcds/household_demographics.dat`),(`format`=`delimited-text`),(`delimiter`=`|`));
- 
-load dataset income_band using localfs ((`path`=`localhost:///home/dbis-nuc10/DBIS/data/benchmark/tpcds/income_band.dat`),(`format`=`delimited-text`),(`delimiter`=`|`));
- 
-load dataset inventory using localfs ((`path`=`localhost:///home/dbis-nuc10/DBIS/data/benchmark/tpcds/inventory.dat`),(`format`=`delimited-text`),(`delimiter`=`|`));
- 
-load dataset item using localfs ((`path`=`localhost:///home/dbis-nuc10/DBIS/data/benchmark/tpcds/item.dat`),(`format`=`delimited-text`),(`delimiter`=`|`));
- 
-load dataset promotion using localfs ((`path`=`localhost:///home/dbis-nuc10/DBIS/data/benchmark/tpcds/promotion.dat`),(`format`=`delimited-text`),(`delimiter`=`|`));
- 
-load dataset reason using localfs ((`path`=`localhost:///home/dbis-nuc10/DBIS/data/benchmark/tpcds/reason.dat`),(`format`=`delimited-text`),(`delimiter`=`|`));
- 
-load dataset ship_mode using localfs ((`path`=`localhost:///home/dbis-nuc10/DBIS/data/benchmark/tpcds/ship_mode.dat`),(`format`=`delimited-text`),(`delimiter`=`|`));
- 
-load dataset store using localfs ((`path`=`localhost:///home/dbis-nuc10/DBIS/data/benchmark/tpcds/store.dat`),(`format`=`delimited-text`),(`delimiter`=`|`));
- 
-load dataset store_returns using localfs ((`path`=`localhost:///home/dbis-nuc10/DBIS/data/benchmark/tpcds/store_returns.dat`),(`format`=`delimited-text`),(`delimiter`=`|`));
- 
-load dataset store_sales using localfs ((`path`=`localhost:///home/dbis-nuc10/DBIS/data/benchmark/tpcds/store_sales.dat`),(`format`=`delimited-text`),(`delimiter`=`|`));
- 
-load dataset time_dim using localfs ((`path`=`localhost:///home/dbis-nuc10/DBIS/data/benchmark/tpcds/time_dim.dat`),(`format`=`delimited-text`),(`delimiter`=`|`));
- 
-load dataset warehouse using localfs ((`path`=`localhost:///home/dbis-nuc10/DBIS/data/benchmark/tpcds/warehouse.dat`),(`format`=`delimited-text`),(`delimiter`=`|`));
- 
-load dataset web_page using localfs ((`path`=`localhost:///home/dbis-nuc10/DBIS/data/benchmark/tpcds/web_page.dat`),(`format`=`delimited-text`),(`delimiter`=`|`));
- 
-load dataset web_returns using localfs ((`path`=`localhost:///home/dbis-nuc10/DBIS/data/benchmark/tpcds/web_returns.dat`),(`format`=`delimited-text`),(`delimiter`=`|`));
- 
-load dataset web_sales using localfs ((`path`=`localhost:///home/dbis-nuc10/DBIS/data/benchmark/tpcds/web_sales.dat`),(`format`=`delimited-text`),(`delimiter`=`|`));
- 
-load dataset web_site using localfs ((`path`=`localhost:///home/dbis-nuc10/DBIS/data/benchmark/tpcds/web_site.dat`),(`format`=`delimited-text`),(`delimiter`=`|`));
 
 ''',
     "pretty": "true",
