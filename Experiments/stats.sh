@@ -7,11 +7,10 @@ output_file="system_stats.txt"
 interval=5
 
 # Header for the data in the text file
-echo "Timestamp, CPU Usage (%), Memory Usage (%), Disk Read (kB/s), Disk Write (kB/s)" >> $output_file
+echo "Timestamp, CPU Usage (%), Memory Usage (%), Disk Read (kB/s), Disk Write (kB/s)" >>$output_file
 
 # Infinite loop to keep capturing the data
-while true
-do
+while true; do
     # Get CPU usage (%)
     cpu_usage=$(top -bn1 | grep "Cpu(s)" | sed "s/.*, *\([0-9.]*\)%* id.*/\1/" | awk '{print 100 - $1}')
 
@@ -22,7 +21,7 @@ do
     disk_stats=$(iostat -dkx 1 1 | awk 'NR==7 {print $6, $7}')
 
     # Combine the results with the timestamp
-    echo "$(date +'%Y-%m-%d %H:%M:%S'), $cpu_usage, $memory_usage, $disk_stats" >> $output_file
+    echo "$(date +'%Y-%m-%d %H:%M:%S'), $cpu_usage, $memory_usage, $disk_stats" >>$output_file
 
     # Sleep for the specified interval
     sleep $interval
