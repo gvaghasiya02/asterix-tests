@@ -1,3 +1,4 @@
+# Comapring results with the same query for different group by approaches
 import requests
 
 # URL for the query service

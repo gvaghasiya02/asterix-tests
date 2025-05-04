@@ -1,3 +1,4 @@
+# Wisconsin Prefix data Close and Open Load
 import requests
 
 url = "http://localhost:19002/query/service"

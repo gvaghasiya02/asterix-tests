@@ -1,3 +1,4 @@
+# get average of the query metrics based on queries
 import csv
 import numpy as np
 

@@ -1,3 +1,4 @@
+// This program allocates a large amount of memory (X GB) and locks it in RAM using mlock.
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>

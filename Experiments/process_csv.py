@@ -1,3 +1,4 @@
+# Process CSV file to extract and clean query statistics run after avg.py
 import pandas as pd
 import re
 

@@ -1,3 +1,4 @@
+# This script is used to run the BigFun scheduler in the background and kill it after 4 hours
 #!/bin/bash
 export BIGFUN_HOME=/home/dbis-nuc10/DBIS/SchedularRunnerFinal/
 cd /home/dbis-nuc10/DBIS/SchedularRunnerFinal/target

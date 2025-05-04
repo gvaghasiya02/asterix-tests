@@ -1,3 +1,4 @@
+# Loading data test open datasets( with uuid as primary key, no other data type defined, no compression)
 import requests
 
 url = "http://localhost:19002/query/service"

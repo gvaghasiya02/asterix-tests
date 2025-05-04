@@ -1,3 +1,4 @@
+# Loading Wiscon data into a dataset with data types defined
 import requests
 
 url = "http://localhost:19002/query/service"

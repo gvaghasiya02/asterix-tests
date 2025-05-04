@@ -1,3 +1,4 @@
+# Loads the TPC-DS dataset
 import requests
 
 url = "http://localhost:19002/query/service"

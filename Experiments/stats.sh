@@ -1,5 +1,5 @@
 #!/bin/bash
-
+# This script captures system statistics (CPU, memory, disk I/O) and saves them to a text file
 # File to store the output
 output_file="system_stats.txt"
 

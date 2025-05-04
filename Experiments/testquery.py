@@ -1,3 +1,4 @@
+# Just normal test query with curl
 import requests
 
 url = "http://localhost:19002/query/service"

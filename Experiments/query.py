@@ -1,3 +1,4 @@
+# Running x run of each query from queries.txt and also clearing the cache
 import requests
 import csv
 import json

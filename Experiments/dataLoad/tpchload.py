@@ -1,3 +1,4 @@
+# Loading the TPC-H benchmark data into a database
 import requests
 
 url = "http://localhost:19002/query/service"

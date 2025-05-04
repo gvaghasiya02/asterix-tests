@@ -1,3 +1,4 @@
+# This script takes a large string of SQL queries, splits them into individual queries specifically for group by appraoches
 queries = """
 
 """

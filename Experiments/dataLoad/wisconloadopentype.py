@@ -1,3 +1,4 @@
+# Loading dataset with only primary key defined
 import requests
 
 url = "http://localhost:19002/query/service"

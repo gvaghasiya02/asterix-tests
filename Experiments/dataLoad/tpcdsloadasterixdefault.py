@@ -1,3 +1,4 @@
+# Loads TPC-DS data into AsterixDB using asterix functions
 import requests
 
 url = "http://localhost:19002/query/service"

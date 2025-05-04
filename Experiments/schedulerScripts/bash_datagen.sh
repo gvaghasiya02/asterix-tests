@@ -1,4 +1,5 @@
 #!/bin/bash
+# Data Geberation for Scheduler, change data file and prefix to get dataset names
 export DATAGEN_HOME=/home/ubuntu/datagen_afterCB
 echo $DATAGEN_HOME
 drop=true
