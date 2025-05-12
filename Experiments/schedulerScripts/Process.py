@@ -54,10 +54,10 @@ def process_json_to_csv(input_json_path, output_csv_path):
         exec_end = row["exec_end"]
 
         # Normalize timestamps (only if they are not -1)
-        added_queue_adj = int((added_queue - min_time)/10e9) if added_queue != -1 else -1
-        added_mem_queue_adj = int((added_mem_queue - min_time)/10e9) if added_mem_queue != -1 else -1
-        exec_start_adj = int((exec_start - min_time)/10e9)
-        exec_end_adj = int((exec_end - min_time)/10e9)
+        added_queue_adj = int((added_queue - min_time)/1e9) if added_queue != -1 else -1
+        added_mem_queue_adj = int((added_mem_queue - min_time)/1e9) if added_mem_queue != -1 else -1
+        exec_start_adj = int((exec_start - min_time)/1e9)
+        exec_end_adj = int((exec_end - min_time)/1e9)
 
         # Recompute durations based on adjusted times
         if added_queue_adj == -1:
