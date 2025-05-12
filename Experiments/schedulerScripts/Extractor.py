@@ -16,7 +16,7 @@ def extract_unique_request_ids(filename):
 
 def extract_qidvid_jsons(filename, output_file):
     unique_ids = extract_unique_request_ids(filename)
-    print(f"Unique request IDs extracted: {unique_ids}")
+    # print(f"Unique request IDs extracted: {unique_ids}")
 
     blocks = []
     seen_blocks = set()  # To avoid duplicates

@@ -22,7 +22,7 @@ def plotter(filename):
     labels = []
     allTimes = []
     for i, task in enumerate(df.iterrows()):
-        print(i, task[0], task[1])
+        # print(i, task[0], task[1])
         labels.append(task[0])
         data3 = [task[1][["MemoryQStartTime", "MemoryQDuration"]]]
         ax.broken_barh(
@@ -72,7 +72,9 @@ def plotter(filename):
     # ax.legend("ZERO_SHORT","ZERO_LONG","SMALL","MEDIUM","LARGE")
     # ax.get_xaxis().set_visible(False)
     # fig.axes.get_yaxis().set_visible(False)
-    plt.savefig("./Plots/" + filename.split(".txt")[0] + ".jpg", bbox_inches="tight")
+    plt.savefig(
+        "./Plots/" + filename.split("/")[-1].split(".")[0] + ".jpg", bbox_inches="tight"
+    )
     # plt.show()
     plt.close()
 
