@@ -82,8 +82,6 @@ def plotter(filename):
 if __name__ == "__main__":
     plotter("./Results/FIFO_CP_48.csv")
     plotter("./Results/FIFOOrdered_CP_48.csv")
-    plotter("./Results/Colorado_V1_CP_48.csv")
-    plotter("./Results/Colorado_V2_CP_48.csv")
     plotter("./Results/Wiscon_V1_CP_48.csv")
     plotter("./Results/Wiscon_V2_CP_48.csv")
     plotter("./Results/Wiscon_V3_CP_48.csv")
