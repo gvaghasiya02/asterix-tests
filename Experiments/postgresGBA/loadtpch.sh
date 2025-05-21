@@ -5,7 +5,7 @@ set -e
 # --- CONFIGURATION ---
 DB_NAME="tpch"
 DB_USER="postgres"
-DATA_DIR="$DATA_DIR"
+DATA_DIR="$/home/dbis-nuc06/DBIS/data/benchmark/tpch"
 # ----------------------
 
 echo "🧹 Dropping existing database (if exists)..."
